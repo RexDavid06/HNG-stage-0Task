@@ -70,4 +70,4 @@ curl -X GET http://localhost:8000/api/home/
 
 # Backlink
 For more information about hiring Python developers, visit:
-Hire Python Develope
+Hire Python Developer

@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,8 +27,7 @@ SECRET_KEY = 'django-insecure-h6i%su4*_e97#awm+g815r(66td@-qglid7cd*1tcaj^%p%z0n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['your-railway-app-domain.onrender.com', 'localhost']
-
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -77,11 +77,14 @@ WSGI_APPLICATION = 'stage0.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-import dj_database_url
 DATABASES = {
-    'default': dj_database_url.config(default='postgres://user:password@localhost/dbname')
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
+DATABASES["default"] = dj_database_url.parse("postgresql://stage0_user:Czcumszivm9rCpUXrqr69uEXfWauwkp0@dpg-cud7lkt6l47c7387fa6g-a.oregon-postgres.render.com/stage0")
 
 
 # Password validation
@@ -119,8 +122,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

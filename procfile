@@ -1,1 +1,0 @@
-web: gunicorn stage0.wsgi

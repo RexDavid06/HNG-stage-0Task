@@ -1,0 +1,18 @@
+[build]
+  command = "pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate && gunicorn your_project_name.wsgi"
+  publish = "staticfiles"
+
+[build.environment]
+  DJANGO_SETTINGS_MODULE = "your_project_name.settings"
+  PYTHONUNBUFFERED = "1"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

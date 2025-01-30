@@ -1,9 +1,17 @@
 [build]
-  command = "pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate && gunicorn your_project_name.wsgi"
+  command = """
+  apt-get update &&
+  apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev &&
+  pip install --upgrade pip &&
+  pip install -r requirements.txt &&
+  python manage.py collectstatic --noinput &&
+  python manage.py migrate &&
+  gunicorn your_project_name.wsgi
+  """
   publish = "staticfiles"
 
 [build.environment]
-  DJANGO_SETTINGS_MODULE = "your_project_name.settings"
+  DJANGO_SETTINGS_MODULE = "stage0.settings"
   PYTHONUNBUFFERED = "1"
 
 [[headers]]

@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-h6i%su4*_e97#awm+g815r(66td@-qglid7cd*1tcaj^%p%z0n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -84,7 +84,7 @@ DATABASES = {
     }
 }
 
-DATABASES["default"] = dj_database_url.parse("postgresql://stage0_user:Czcumszivm9rCpUXrqr69uEXfWauwkp0@dpg-cud7lkt6l47c7387fa6g-a.oregon-postgres.render.com/stage0")
+
 
 
 # Password validation

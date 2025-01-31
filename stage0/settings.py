@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -52,7 +53,16 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+# Add CORS settings
+CORS_ALLOWED_ORIGINS = [
+    "https://stage0-weq4.onrender.com",  # Add your allowed origin
+]
+
+# Optional: Allow all origins (for testing only, remove in production)
+CORS_ALLOW_ALL_ORIGINS = True
 
 
 ROOT_URLCONF = 'stage0.urls'
